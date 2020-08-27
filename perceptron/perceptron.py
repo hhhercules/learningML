@@ -4,7 +4,6 @@ from sklearn.datasets import load_iris
 import matplotlib.pyplot as plt 
 #load data
 iris = load_iris()
-print(type(iris))
 df = pd.DataFrame(iris.data, columns = iris.feature_names)
 df['label'] = iris.target 
 df.columns = [
@@ -16,7 +15,7 @@ plt.scatter(df[50:100]['sepal length'],df[50:100]['sepal width'], label = '1')
 plt.xlabel('sepal length')
 plt.ylabel('sepal width')
 plt.legend()
-plt.show()
-data = np.array(df.iloc[:100, [9, 1, -1]])
-X, y = data[:,:,-1],data[:,-1]
+#plt.show()
+data = np.array(df.iloc[:100, [0, 1, -1]])
+X, y = data[:,:-1],data[:,-1]
 y = np.array([1 if i == 1 else -1 for i in y])
